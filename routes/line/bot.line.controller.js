@@ -99,6 +99,7 @@ async function sendQR(textToGen,replyToken) {
  */
 
 async function webhook(req,res){
+    logger.info('[bot_removed] '+JSON.stringify(req.body.events[0]))
     if(req.body.events[0].type == 'join'){
         groupId = req.body.events[0].source.groupId;
         logger.info(tag.webhook+'groupId '+groupId+' join event')
