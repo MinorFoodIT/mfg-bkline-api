@@ -16,6 +16,6 @@ RUN npm install
 COPY --chown=node:node . .
 RUN pwd
 
-EXPOSE 4100
+EXPOSE 4400
 
 CMD [ "npm","run","start" ]
