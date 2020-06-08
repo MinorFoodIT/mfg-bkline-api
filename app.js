@@ -121,7 +121,7 @@ if (config.env !== 'test') {
             new (winstonInstance.transports.Console)({
                 json: true,
                 colorize: true,
-                format: winstonInstance.format.printf(info => `${moment().tz('Asia/Bangkok').format()} | ${info.label} | ${info.level} | ${info.message}`)
+                format: winstonInstance.format.printf(info => `${moment().format()} | ${info.label} | ${info.level} | ${info.message}`)
             })
         ],
         format: winstonInstance.format.combine(
