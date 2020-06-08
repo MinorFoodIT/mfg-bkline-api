@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  mfg-bkline-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        DB_HOST: db2
+    #container_name: 'airplay-api'
+    restart: 'always' #on-failure
+    #expose:
+    #  - '4400'
+    #ports:
+    #  - '4400:4400'
+    networks: # Networks to join (Services on the same network can communicate with each other using their name)
+      - api_network
+      - postgres_network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.bkline.entrypoints=websecure"
+      - "traefik.http.routers.bkline.rule=Host(`bkline.minorfoodit.com`)"
+      - "traefik.http.routers.bkline.service=mfg-bkline-api"
+      - "traefik.http.routers.bkline.tls=true"
+      - "traefik.http.services.mfg-bkline-api.loadbalancer.server.port=4400"
+      - "traefik.docker.network=api_network"
+
+networks:
+  postgres_network:
+    external: true
+  api_network:
+    external: true
