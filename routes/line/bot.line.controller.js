@@ -154,7 +154,8 @@ async function webhook(req,res){
         })
     }
     //next(req,res)
-    res.json(req.body.events) // req.body will be webhook event object
+    console.log(req.body.events);
+    res.status(200).json(req.body.events) // req.body will be webhook event object
 }
 
 module.exports = { webhook ,middleware ,handlePreErr};
