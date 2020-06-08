@@ -140,6 +140,7 @@ if (config.env !== 'test') {
 
 // error handler, send stacktrace only during development
 app.use((err, req, res, next) => {// eslint-disable-line no-unused-vars
+    console.log(err);
     res.status(err.status).json({
         code: err.status,
         message: err.isPublic ? err.message : httpStatus[err.status],
