@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
       args:
         DB_HOST: db2
-    #container_name: 'airplay-api'
+    container_name: 'mfg-bkline-api'
     restart: 'always' #on-failure
     #expose:
     #  - '4400'
