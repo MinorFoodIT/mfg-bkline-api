@@ -99,7 +99,7 @@ router.post('/v1/promotion/acquired', (req, res) => {
         });
         connection.release();
       } else {
-        connection.query('SELECT * FROM vouchers WHERE usedFlag is not null and usedToken = ? and promotion = ? LIMIT 1 ', [jsonBody.userToken,jsonBody.promotion], function (error, results, fields) {
+        connection.query('SELECT * FROM vouchers WHERE usedFlag is not null and userToken = ? and promotion = ? LIMIT 1 ', [jsonBody.userToken,jsonBody.promotion], function (error, results, fields) {
           if (error) {
             logger.info('[VOUCHER_ACQUIRED_ERROR]  ' + error)
             res.status(200).json({
