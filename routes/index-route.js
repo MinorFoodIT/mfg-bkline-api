@@ -107,7 +107,7 @@ router.post('/v1/promotion/acquired', (req, res) => {
             });
             connection.release();
           } else {
-            if (!helper.isNullEmptry(results[0].code)) {
+            if (results.length > 0) {
               logger.info('[VOUCHER_ACQUIRED] ' + results[0].code);
               let usedVoucher = {
                 promotion: results[0].promotion,
