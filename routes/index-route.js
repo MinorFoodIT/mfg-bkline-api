@@ -112,14 +112,15 @@ router.post('/v1/promotion/acquired', (req, res) => {
               let usedVoucher = {
                 promotion: results[0].promotion,
                 code: results[0].code,
-                userToken: userId,
+                userToken: results[0].userToken,
                 usedFlag: 'Y',
                 usedDate: moment(results[0].usedDate).format('YYYY-MM-DD HH:mm:ss')
               }
               res.status(200).json(usedVoucher);
             } else {
               let notFoundVoucher = {
-                promotion: results[0].promotion,
+                promotion: jsonBody.promotion,
+                userToken: jsonBody.userToken,
                 code: ''
               }
               res.status(200).json(notFoundVoucher);
